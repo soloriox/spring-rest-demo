@@ -1,31 +1,13 @@
-package com.demo.spring.demo.entities;
+package com.demo.spring.demo.dto;
 
-import jakarta.persistence.*;
+public class CityDTO {
 
-@Entity
-@Table(name = "city")
-public class City {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "ID", unique = true, nullable = false)
     private int id;
-
-    @Column(name = "Name", length = 35, nullable = false)
     private String name;
-
-    @Column(name = "CountryCode", length = 3, nullable = false)
     private String countryCode;
-
-    @Column(name = "District", length = 20, nullable = false)
     private String district;
-
-    @Column(name="Population", nullable = false)
     private int population;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code")
-    private Country country;
+    private CountryDTO country;
 
     public int getId() {
         return id;
@@ -67,11 +49,11 @@ public class City {
         this.population = population;
     }
 
-    public Country getCountry() {
+    public CountryDTO getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(CountryDTO country) {
         this.country = country;
     }
 }
