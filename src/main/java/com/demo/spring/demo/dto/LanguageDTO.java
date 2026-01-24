@@ -1,5 +1,6 @@
 package com.demo.spring.demo.dto;
 
+import com.demo.spring.demo.entities.CountryLanguage;
 import com.demo.spring.demo.entities.IsOfficial;
 
 public class LanguageDTO {
@@ -8,7 +9,15 @@ public class LanguageDTO {
     private String language;
     private IsOfficial isOfficial;
     private float percentage;
-    private CountryDTO country;
+    private String countryName;
+
+    public LanguageDTO(CountryLanguage countryLanguage){
+        this.countryCode = countryLanguage.getCountryCode();
+        this.language = countryLanguage.getLanguage();
+        this.isOfficial = countryLanguage.getIsOfficial();
+        this.percentage = countryLanguage.getPercentage();
+        this.countryName = countryLanguage.getCountry().getName();
+    }
 
     public String getCountryCode() {
         return countryCode;
@@ -42,11 +51,11 @@ public class LanguageDTO {
         this.percentage = percentage;
     }
 
-    public CountryDTO getCountry() {
-        return country;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public void setCountry(CountryDTO country) {
-        this.country = country;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 }
