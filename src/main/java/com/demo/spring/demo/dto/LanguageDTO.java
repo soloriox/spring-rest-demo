@@ -12,7 +12,7 @@ public class LanguageDTO {
     private String countryName;
 
     public LanguageDTO(CountryLanguage countryLanguage){
-        this.countryCode = countryLanguage.getCountryCode();
+        this.countryCode = countryLanguage.getCountry().getCountryCode();
         this.language = countryLanguage.getLanguage();
         this.isOfficial = countryLanguage.getIsOfficial();
         this.percentage = countryLanguage.getPercentage();

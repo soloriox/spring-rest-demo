@@ -11,5 +11,5 @@ public interface LanguageRepository extends JpaRepository<CountryLanguage, Strin
 
     CountryLanguage findByLanguage(String language);
 
-    List<CountryLanguage> findByCountryCode(String countryCode);
+    //List<CountryLanguage> findByCountryCode(String countryCode);
 }

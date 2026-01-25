@@ -1,71 +1,52 @@
 package com.demo.spring.demo.entities;
 
+import com.demo.spring.demo.config.ContinentConverter;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-@Table(name = "country")
+@Table(name = "Country")
 public class Country {
 
     @Id
-    @Column(name = "Code", unique = true, nullable = false)
-    private String code;
+    @Column(name = "country_code", unique = true, nullable = false)
+    private String countryCode;
 
-    @Column(name = "Name", length = 52, nullable = false)
+    @Column(name = "name", length = 52, nullable = false)
     private String name;
 
-    @Column(name = "Continent", nullable = false)
+    @Convert(converter = ContinentConverter.class)
+    @Column(name = "continent", nullable = false, columnDefinition = "ENUM('Asia','Europe','North America','Africa','Oceania','Antarctica','South America')")
     private Continent continent;
 
-    @Column(name = "Region", length = 26, nullable = false)
+    @Column(name = "region", length = 26, nullable = false)
     private String region;
 
-    @Column(name = "SurfaceArea", nullable = false)
+    @Column(name = "surface_area", nullable = false)
     private double surfaceArea;
 
-    @Column(name = "IndepYear", nullable = true)
-    private short indepYear;
+    @Column(name = "independence_year", nullable = true)
+    private Short independenceYear;
 
-    @Column(name = "Population", nullable = false)
+    @Column(name = "population", nullable = false)
     private int population;
 
-    @Column(name = "lifeExpectancy", nullable = true)
-    private float lifeExpectancy;
+    @Column(name = "life_expectancy", nullable = true)
+    private Float lifeExpectancy;
 
-    @Column(name = "GNP", nullable = true)
-    private float gnp;
-
-    @Column(name = "GNPOld", nullable = true)
-    private float gnpOld;
-
-    @Column(name = "LocalName", length = 45, nullable = false)
-    private String localName;
-
-    @Column(name = "governmentForm", length = 45, nullable = false)
-    private String governmentForm;
-
-    @Column(name = "HeadOfState", length = 60, nullable = true)
-    private String headOfState;
-
-    @Column(name = "Capital", nullable = true)
-    private int capital;
-
-    @Column(name = "Code2", length = 2, nullable = false)
-    private String code2;
-
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
     private List<CountryLanguage> languages;
 
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
     private List<City> cities;
 
-    public String getCode() {
-        return code;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     public String getName() {
@@ -100,12 +81,12 @@ public class Country {
         this.surfaceArea = surfaceArea;
     }
 
-    public short getIndepYear() {
-        return indepYear;
+    public short getIndependenceYear() {
+        return independenceYear;
     }
 
-    public void setIndepYear(short indepYear) {
-        this.indepYear = indepYear;
+    public void setIndependenceYear(Short independenceYear) {
+        this.independenceYear = independenceYear;
     }
 
     public int getPopulation() {
@@ -116,68 +97,12 @@ public class Country {
         this.population = population;
     }
 
-    public float getLifeExpectancy() {
+    public Float getLifeExpectancy() {
         return lifeExpectancy;
     }
 
-    public void setLifeExpectancy(float lifeExpectancy) {
+    public void setLifeExpectancy(Float lifeExpectancy) {
         this.lifeExpectancy = lifeExpectancy;
-    }
-
-    public float getGnp() {
-        return gnp;
-    }
-
-    public void setGnp(float gnp) {
-        this.gnp = gnp;
-    }
-
-    public float getGnpOld() {
-        return gnpOld;
-    }
-
-    public void setGnpOld(float gnpOld) {
-        this.gnpOld = gnpOld;
-    }
-
-    public String getLocalName() {
-        return localName;
-    }
-
-    public void setLocalName(String localName) {
-        this.localName = localName;
-    }
-
-    public String getGovernmentForm() {
-        return governmentForm;
-    }
-
-    public void setGovernmentForm(String governmentForm) {
-        this.governmentForm = governmentForm;
-    }
-
-    public String getHeadOfState() {
-        return headOfState;
-    }
-
-    public void setHeadOfState(String headOfState) {
-        this.headOfState = headOfState;
-    }
-
-    public int getCapital() {
-        return capital;
-    }
-
-    public void setCapital(int capital) {
-        this.capital = capital;
-    }
-
-    public String getCode2() {
-        return code2;
-    }
-
-    public void setCode2(String code2) {
-        this.code2 = code2;
     }
 
     public List<CountryLanguage> getLanguages() {

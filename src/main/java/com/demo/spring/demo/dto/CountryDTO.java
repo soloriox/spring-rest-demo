@@ -5,30 +5,23 @@ import java.util.List;
 
 public class CountryDTO {
 
-    private String code;
+    private String countryCode;
     private String name;
     private Continent continent;
     private String region;
     private double surfaceArea;
-    private short indepYear;
+    private short independenceYear;
     private int population;
     private float lifeExpectancy;
-    private float gnp;
-    private float gnpOld;
-    private String localName;
-    private String governmentForm;
-    private String headOfState;
-    private int capital;
-    private String code2;
     private List<LanguageDTO> languages;
     private List<CityDTO> cities;
 
-    public String getCode() {
-        return code;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     public String getName() {
@@ -63,12 +56,12 @@ public class CountryDTO {
         this.surfaceArea = surfaceArea;
     }
 
-    public short getIndepYear() {
-        return indepYear;
+    public short getIndependenceYear() {
+        return independenceYear;
     }
 
-    public void setIndepYear(short indepYear) {
-        this.indepYear = indepYear;
+    public void setIndependenceYear(short independenceYear) {
+        this.independenceYear = independenceYear;
     }
 
     public int getPopulation() {
@@ -85,62 +78,6 @@ public class CountryDTO {
 
     public void setLifeExpectancy(float lifeExpectancy) {
         this.lifeExpectancy = lifeExpectancy;
-    }
-
-    public float getGnp() {
-        return gnp;
-    }
-
-    public void setGnp(float gnp) {
-        this.gnp = gnp;
-    }
-
-    public float getGnpOld() {
-        return gnpOld;
-    }
-
-    public void setGnpOld(float gnpOld) {
-        this.gnpOld = gnpOld;
-    }
-
-    public String getLocalName() {
-        return localName;
-    }
-
-    public void setLocalName(String localName) {
-        this.localName = localName;
-    }
-
-    public String getGovernmentForm() {
-        return governmentForm;
-    }
-
-    public void setGovernmentForm(String governmentForm) {
-        this.governmentForm = governmentForm;
-    }
-
-    public String getHeadOfState() {
-        return headOfState;
-    }
-
-    public void setHeadOfState(String headOfState) {
-        this.headOfState = headOfState;
-    }
-
-    public int getCapital() {
-        return capital;
-    }
-
-    public void setCapital(int capital) {
-        this.capital = capital;
-    }
-
-    public String getCode2() {
-        return code2;
-    }
-
-    public void setCode2(String code2) {
-        this.code2 = code2;
     }
 
     public List<LanguageDTO> getLanguages() {

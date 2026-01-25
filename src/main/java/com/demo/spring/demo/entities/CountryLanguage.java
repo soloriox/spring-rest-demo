@@ -4,33 +4,31 @@ import jakarta.persistence.*;
 
 @Entity
 @IdClass(CountryLanguagePrimaryKey.class)
-@Table(name = "countrylanguage")
+@Table(name = "CountryLanguage")
 public class CountryLanguage {
 
     @Id
-    @Column(name = "CountryCode", unique = true, nullable = false)
-    private String countryCode;
-
-    @Id
-    @Column(name = "Language", length = 30, nullable = false)
-    private String language;
-
-    @Column(name = "IsOfficial", nullable = false)
-    private IsOfficial isOfficial;
-
-    @Column(name = "Percentage", nullable = false)
-    private float percentage;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code")
+    @JoinColumn(name = "country_code")
     private Country country;
 
-    public String getCountryCode() {
-        return countryCode;
+    @Id
+    @Column(name = "language", length = 30, nullable = false)
+    private String language;
+
+    @Column(name = "is_official", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private IsOfficial isOfficial;
+
+    @Column(name = "percentage", nullable = false)
+    private float percentage;
+
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public String getLanguage() {
@@ -57,11 +55,4 @@ public class CountryLanguage {
         this.percentage = percentage;
     }
 
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
 }

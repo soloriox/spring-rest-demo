@@ -38,11 +38,13 @@ public class LanguageService {
     }
 
     public List<LanguageDTO> getByCountryCode(String countryCode){
+        /*
         List<LanguageDTO> languages = this.languageRepository.findByCountryCode(countryCode)
                 .stream()
                 .map(LanguageDTO::new)
                 .collect(Collectors.toList());
-        return languages;
+         */
+        return null;
     }
 
 }

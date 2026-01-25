@@ -3,29 +3,26 @@ package com.demo.spring.demo.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "city")
+@Table(name = "City")
 public class City {
 
     @Id
     @GeneratedValue
-    @Column(name = "ID", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     private int id;
 
-    @Column(name = "Name", length = 35, nullable = false)
+    @Column(name = "name", length = 35, nullable = false)
     private String name;
 
-    @Column(name = "CountryCode", length = 3, nullable = false)
-    private String countryCode;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_code")
+    private Country country;
 
-    @Column(name = "District", length = 20, nullable = false)
+    @Column(name = "district", length = 20, nullable = false)
     private String district;
 
-    @Column(name="Population", nullable = false)
+    @Column(name="population", nullable = false)
     private int population;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code")
-    private Country country;
 
     public int getId() {
         return id;
@@ -41,14 +38,6 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
     }
 
     public String getDistrict() {
