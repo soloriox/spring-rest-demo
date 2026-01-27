@@ -4,15 +4,12 @@ import com.demo.spring.demo.dto.CityDTO;
 import com.demo.spring.demo.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/city")
+@RequestMapping("/cities")
 public class CityController {
 
     private final CityService cityService;
@@ -29,26 +26,26 @@ public class CityController {
     }
 
     @GetMapping("/country-code/{countryCode}")
-    public ResponseEntity<List<CityDTO>> getByCountryCode(@RequestParam String countryCode){
+    public ResponseEntity<List<CityDTO>> getByCountryCode(@PathVariable String countryCode){
         List<CityDTO> cities = this.cityService.getByCountryCode(countryCode);
         return ResponseEntity.ok(cities);
     }
 
     @GetMapping("/country-name/{countryName}")
-    public ResponseEntity<List<CityDTO>> getByCountryName(@RequestParam String countryName){
+    public ResponseEntity<List<CityDTO>> getByCountryName(@PathVariable String countryName){
         List<CityDTO> cities = this.cityService.getByCountryName(countryName);
         return ResponseEntity.ok(cities);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CityDTO> getById(@RequestParam int id){
+    @GetMapping("/city-code/{id}")
+    public ResponseEntity<CityDTO> getById(@PathVariable int id){
         CityDTO city = this.cityService.getById(id);
         return ResponseEntity.ok(city);
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<CityDTO> getByName(@RequestParam String name){
-        CityDTO city = this.cityService.getByName(name);
-        return ResponseEntity.ok(city);
+    @GetMapping("/city-name/{name}")
+    public ResponseEntity<List<CityDTO>> getByName(@PathVariable String name){
+        List<CityDTO> cities = this.cityService.getByName(name);
+        return ResponseEntity.ok(cities);
     }
 }

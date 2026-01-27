@@ -1,5 +1,8 @@
 package com.demo.spring.demo.dto;
 
+import com.demo.spring.demo.entities.City;
+import com.demo.spring.demo.entities.Country;
+
 public class CityDTO {
 
     private int id;
@@ -7,7 +10,19 @@ public class CityDTO {
     private String countryCode;
     private String district;
     private int population;
-    private CountryDTO country;
+    private String country;
+
+    public CityDTO(City city){
+        this.id = city.getId();
+        this.name = city.getName();
+        this.countryCode = city.getCountry().getCountryCode();
+        this.district = city.getDistrict();
+        this.population = city.getPopulation();
+        this.country = city.getCountry().getName();
+    }
+
+    public CityDTO(){
+    }
 
     public int getId() {
         return id;
@@ -49,11 +64,11 @@ public class CityDTO {
         this.population = population;
     }
 
-    public CountryDTO getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(CountryDTO country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 }

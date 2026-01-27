@@ -2,10 +2,8 @@ package com.demo.spring.demo.service;
 
 import com.demo.spring.demo.dto.LanguageDTO;
 import com.demo.spring.demo.entities.Country;
-import com.demo.spring.demo.entities.CountryLanguage;
 import com.demo.spring.demo.repository.CountryRepository;
 import com.demo.spring.demo.repository.LanguageRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +16,10 @@ public class LanguageService {
 
     private final LanguageRepository languageRepository;
     private final CountryRepository countryRepository;
-    private final ModelMapper modelMapper;
 
     @Autowired
-    public LanguageService(LanguageRepository languageRepository, ModelMapper modelMapper, CountryRepository countryRepository){
+    public LanguageService(LanguageRepository languageRepository, CountryRepository countryRepository){
         this.languageRepository = languageRepository;
-        this.modelMapper = modelMapper;
         this.countryRepository = countryRepository;
     }
 
