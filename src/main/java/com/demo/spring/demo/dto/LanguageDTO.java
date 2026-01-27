@@ -1,7 +1,6 @@
 package com.demo.spring.demo.dto;
 
 import com.demo.spring.demo.entities.CountryLanguage;
-import com.demo.spring.demo.entities.IsOfficial;
 
 public class LanguageDTO {
 

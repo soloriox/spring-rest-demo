@@ -1,20 +1,51 @@
 package com.demo.spring.demo.dto;
 
-import com.demo.spring.demo.entities.Continent;
+import com.demo.spring.demo.entities.City;
+import com.demo.spring.demo.entities.Country;
+import com.demo.spring.demo.entities.CountryLanguage;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.util.ArrayList;
 import java.util.List;
 
+@JsonPropertyOrder({"countryCode", "name", "continent", "region", "surfaceArea", "population", "lifeExpectancy", "languages", "cities"})
 public class CountryDTO {
 
     private String countryCode;
     private String name;
-    private Continent continent;
+    private String continent;
     private String region;
     private double surfaceArea;
-    private short independenceYear;
+    private Short independenceYear;
     private int population;
-    private float lifeExpectancy;
-    private List<LanguageDTO> languages;
-    private List<CityDTO> cities;
+    private Float lifeExpectancy;
+    private List<LanguageReduceDTO> languages;
+    private List<CityReduceDTO> cities;
+
+    public CountryDTO(Country country){
+        this.countryCode = country.getCountryCode();
+        this.name = country.getName();
+        this.continent = country.getContinent().getContinentName();
+        this.region = country.getRegion();
+        this.surfaceArea = country.getSurfaceArea();
+        this.independenceYear = country.getIndependenceYear();
+        this.population = country.getPopulation();
+        this.lifeExpectancy = country.getLifeExpectancy();
+        this.languages = new ArrayList<>();
+        this.cities = new ArrayList<>();
+        for(CountryLanguage countryLanguage: country.getLanguages()){
+            LanguageReduceDTO language = new LanguageReduceDTO(countryLanguage);
+            this.languages.add(language);
+        }
+        for(City countryCity: country.getCities()){
+            CityReduceDTO city = new CityReduceDTO(countryCity);
+            this.cities.add(city);
+        }
+    }
+
+    public CountryDTO(){
+
+    }
 
     public String getCountryCode() {
         return countryCode;
@@ -32,11 +63,11 @@ public class CountryDTO {
         this.name = name;
     }
 
-    public Continent getContinent() {
+    public String getContinent() {
         return continent;
     }
 
-    public void setContinent(Continent continent) {
+    public void setContinent(String continent) {
         this.continent = continent;
     }
 
@@ -56,11 +87,11 @@ public class CountryDTO {
         this.surfaceArea = surfaceArea;
     }
 
-    public short getIndependenceYear() {
+    public Short getIndependenceYear() {
         return independenceYear;
     }
 
-    public void setIndependenceYear(short independenceYear) {
+    public void setIndependenceYear(Short independenceYear) {
         this.independenceYear = independenceYear;
     }
 
@@ -72,27 +103,27 @@ public class CountryDTO {
         this.population = population;
     }
 
-    public float getLifeExpectancy() {
+    public Float getLifeExpectancy() {
         return lifeExpectancy;
     }
 
-    public void setLifeExpectancy(float lifeExpectancy) {
+    public void setLifeExpectancy(Float lifeExpectancy) {
         this.lifeExpectancy = lifeExpectancy;
     }
 
-    public List<LanguageDTO> getLanguages() {
+    public List<LanguageReduceDTO> getLanguages() {
         return languages;
     }
 
-    public void setLanguages(List<LanguageDTO> languages) {
+    public void setLanguages(List<LanguageReduceDTO> languages) {
         this.languages = languages;
     }
 
-    public List<CityDTO> getCities() {
+    public List<CityReduceDTO> getCities() {
         return cities;
     }
 
-    public void setCities(List<CityDTO> cities) {
+    public void setCities(List<CityReduceDTO> cities) {
         this.cities = cities;
     }
 }

@@ -81,7 +81,7 @@ public class Country {
         this.surfaceArea = surfaceArea;
     }
 
-    public short getIndependenceYear() {
+    public Short getIndependenceYear() {
         return independenceYear;
     }
 
