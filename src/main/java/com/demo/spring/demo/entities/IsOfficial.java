@@ -10,7 +10,7 @@ public enum IsOfficial {
         this.value = value;
     }
 
-    boolean getValue(){
+    public boolean getValue(){
         return this.value;
     }
 }

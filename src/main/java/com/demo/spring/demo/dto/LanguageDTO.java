@@ -7,14 +7,14 @@ public class LanguageDTO {
 
     private String countryCode;
     private String language;
-    private IsOfficial isOfficial;
+    private boolean isOfficial;
     private float percentage;
     private String countryName;
 
     public LanguageDTO(CountryLanguage countryLanguage){
         this.countryCode = countryLanguage.getCountry().getCountryCode();
         this.language = countryLanguage.getLanguage();
-        this.isOfficial = countryLanguage.getIsOfficial();
+        this.isOfficial = countryLanguage.getIsOfficial().getValue();
         this.percentage = countryLanguage.getPercentage();
         this.countryName = countryLanguage.getCountry().getName();
     }
@@ -35,11 +35,11 @@ public class LanguageDTO {
         this.language = language;
     }
 
-    public IsOfficial getIsOfficial() {
+    public boolean getIsOfficial() {
         return isOfficial;
     }
 
-    public void setIsOfficial(IsOfficial isOfficial) {
+    public void setIsOfficial(boolean isOfficial) {
         this.isOfficial = isOfficial;
     }
 

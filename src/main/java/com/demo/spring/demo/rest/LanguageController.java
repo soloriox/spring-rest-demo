@@ -4,15 +4,12 @@ import com.demo.spring.demo.dto.LanguageDTO;
 import com.demo.spring.demo.service.LanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/language")
+@RequestMapping("/languages")
 public class LanguageController {
 
     private final LanguageService languageService;
@@ -28,15 +25,15 @@ public class LanguageController {
         return ResponseEntity.ok(languages);
     }
 
-    @GetMapping("/{language}")
-    public ResponseEntity<LanguageDTO> getByLanguage(@RequestParam String language){
-        LanguageDTO languageResponse = this.languageService.getByLanguage(language);
-        return ResponseEntity.ok(languageResponse);
+    @GetMapping("/language/{language}")
+    public ResponseEntity<List<LanguageDTO>> getByLanguage(@PathVariable String language){
+        List<LanguageDTO> languages = this.languageService.getByLanguage(language);
+        return ResponseEntity.ok(languages);
     }
 
-    @GetMapping("/{countryCode}")
-    public ResponseEntity<List<LanguageDTO>> getByCountryCode(@RequestParam String countryCode){
-        List<LanguageDTO> languages = this.languageService.getByCountryCode(countryCode);
+    @GetMapping("/country-code/{countryCode}")
+    public ResponseEntity<List<LanguageDTO>> getByCountryCode(@PathVariable String countryCode){
+        List<LanguageDTO> languages = this.languageService.getByCountry(countryCode);
         return ResponseEntity.ok(languages);
     }
 }
