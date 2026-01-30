@@ -6,8 +6,8 @@ The database ['World'](https://dev.mysql.com/doc/world-setup/en/world-setup-inst
 
 ### 'To-Do' List
 
-    - Add Loggin system (SLF4J or LOG4J 2)
-    - Create interface for Request
+    - [X] Add Loggin system (SLF4J or LOG4J 2)
+    - [X] Create interface for Request
     - Create custom ResponseEntity.
     - Documentation with OpenAPI (Swagger)
     - Add UAT enviroment, with H2 database.
